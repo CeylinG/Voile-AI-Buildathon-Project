@@ -29,7 +29,7 @@ Bulunduğunuz konumun hava durumunu söyler. "İzmir'de hava nasıl" gibi şehir
 "Saat kaç", "bugün günlerden ne" sorularına anında yanıt verir.
 
 **Kamera ile Nesne Tanıma**  
-"Kamerayı aç" veya "bu ne" dediğinizde kamera açılır. Nesneyi kameraya tutup ekrana dokunun — Voile ürünü, etiketi, banknoту veya sahneyi sesli olarak tanımlar.
+"Kamerayı aç" veya "bu nedir" dediğinizde kamera açılır. Nesneyi kameraya tutup ekrana dokunun — Voile ürünü, etiketi, banknotu veya sahneyi sesli olarak tanımlar.
 
 ## Canlı Demo
 
