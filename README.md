@@ -39,6 +39,7 @@ Demo Video: https://www.loom.com/share/c428fed7ac524467b6391e86c2b64726
 ## Kullanılan Teknolojiler
 
 - **Python Flask** — Backend sunucu
+- **HTML / CSS / JavaScript** — Frontend arayüz
 - **Google Gemini API** — Yapay zeka, görüntü analizi ve web araması
 - **SQLite** — Sohbet geçmişi ve liste yönetimi
 - **Web Speech API** — Konuşma tanıma (STT) ve sesli yanıt (TTS)
