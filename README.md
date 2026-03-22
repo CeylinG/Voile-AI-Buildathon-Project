@@ -34,7 +34,7 @@ Bulunduğunuz konumun hava durumunu söyler. "İzmir'de hava nasıl" gibi şehir
 ## Canlı Demo
 
 Yayın Linki: https://voile-ai-buildathon-project-production.up.railway.app/
-Demo Video: (çekim sonrası eklenecek)
+Demo Video: https://www.loom.com/share/c428fed7ac524467b6391e86c2b64726
 
 ## Kullanılan Teknolojiler
 
