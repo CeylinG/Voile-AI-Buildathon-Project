@@ -1,40 +1,119 @@
-# Teknoloji Yığını ve Kurulum Rehberi (Tech Stack): Voile Web Uygulaması
+# Teknoloji Yığını (Tech Stack): Voile Web Uygulaması
 
-## 1. Teknoloji Yığını (Tech Stack)
+## 1. Teknoloji Yığını
 
-Voile'nnn doğası sadelik üzerine kurulu olduğu için karmaşık kütüphanelerden kaçınılmış; başlangıç seviyesine uygun, güvenli ve öğrenmesi en kolay yapı tercih edilmiştir.
+Voile'nin doğası sadelik üzerine kurulu olduğu için karmaşık kütüphanelerden kaçınılmış; başlangıç seviyesine uygun, güvenli ve öğrenmesi en kolay yapı tercih edilmiştir.
 
-* **Ön Yüz (Frontend): HTML, CSS ve Vanilla (Saf) JavaScript**
-  * **Neden?** Ekranda devasa, simsiyah, tek bir dokunmatik alanımız olacak. Ekstra bir arayüz kütüphanesine (React, Angular vb.) ihtiyaç yoktur. Tarayıcıların içinde hazır gelen **Web Speech API** kullanılarak sesi metne çevirme (dinleme) işlemi doğrudan JavaScript ile yapılacaktır.
-* **Arka Yüz (Backend): Python ve Flask**
-  * **Neden?** API anahtarları asla ön yüzdeki JavaScript kodlarına yazılmaz (güvenlik riski). Python, sözdizimi olarak İngilizceye çok yakın ve yeni başlayanlar için harika bir dildir. Flask ise Python'un en hafif, en minimalist web çatısıdır (framework). Sadece birkaç satır kodla sunucu ayağa kaldırılabilir.
-* **Yapay Zeka: Google Gemini API (Python SDK)**
-  * **Neden?** Doğal dil işleme ve radyo sunucusu akıcılığını sağlama konusunda çok başarılıdır. Google AI Studio üzerinden alınan API anahtarı, Python arka yüzüne güvenle entegre edilecektir.
-* **Veritabanı: SQLite**
-  * **Neden?** Kullanıcının alışveriş listelerini kaydetmek için ayrı bir veritabanı sunucusu kurmaya gerek yoktur. SQLite, doğrudan Python'un içinde hazır gelen, verileri tek bir dosyada tutan, kurulum gerektirmeyen mükemmel bir çözümdür.
+### Ön Yüz (Frontend): HTML, CSS ve Vanilla JavaScript
+`features/frontend/` klasöründe yer alır.
 
-## 2. Kurulum Adımları (Geliştirme Ortamının Hazırlanması)
+Ekranda devasa, simsiyah, tek bir dokunmatik alan bulunur. Ekstra bir arayüz kütüphanesine (React, Angular vb.) ihtiyaç yoktur. Tarayıcıların içinde hazır gelen Web Speech API kullanılarak sesi metne çevirme (STT) ve metni sese çevirme (TTS) işlemleri doğrudan JavaScript ile yapılır.
 
-Bilgisayarda geliştirme ortamını (Development Environment) ayağa kaldırmak için izlenecek adımlar:
+### Arka Yüz (Backend): Python ve Flask
+`features/backend/` klasöründe yer alır.
 
-### Adım 1: Proje Klasörünü Oluşturma
-Masaüstünde veya belgelerde `Voile_App` adında boş bir klasör oluşturulur ve VS Code (veya benzeri bir kod editörü) ile açılır.
+API anahtarları asla ön yüzdeki JavaScript kodlarına yazılmaz. Python sözdizimi olarak İngilizceye çok yakın ve yeni başlayanlar için idealdir. Flask ise Python'un en hafif, en minimalist web çatısıdır. Sadece birkaç satır kodla sunucu ayağa kaldırılabilir.
 
-### Adım 2: Sanal Ortam (Virtual Environment) Kurulumu
-Terminal açılarak projenin içine sanal bir Python ortamı kurulur (Böylece indirilen paketler bilgisayarın ana sistemini etkilemez):
-* **Windows için:** `python -m venv venv` ardından `venv\Scripts\activate`
-* **Mac/Linux için:** `python3 -m venv venv` ardından `source venv/bin/activate`
+### Yapay Zeka: Google Gemini API
+Doğal dil işleme, görüntü analizi ve web araması için kullanılır. Google AI Studio üzerinden alınan API anahtarı Python arka yüzüne güvenle entegre edilmiştir. Agents klasöründeki `ai.py` dosyası bu katmanı yönetir.
 
-### Adım 3: Gerekli Kütüphanelerin Yüklenmesi
-Sanal ortam aktifken (terminalde `(venv)` ibaresi görünürken) gerekli Python paketleri indirilir:
+### Veritabanı: SQLite
+Kullanıcının listeleri ve sohbet geçmişi için ayrı bir veritabanı sunucusu kurmaya gerek yoktur. SQLite doğrudan Python'un içinde hazır gelen, verileri tek bir dosyada tutan ve kurulum gerektirmeyen bir çözümdür.
+
+### Harici API'ler
+- **Open-Meteo API** — Gerçek zamanlı hava durumu verisi. Ücretsiz, kayıt gerektirmez.
+- **Geolocation API** — Tarayıcı üzerinden kullanıcının konumunu tespit eder.
+- **Web Speech API** — Konuşma tanıma (STT) ve sesli yanıt (TTS) için tarayıcının yerleşik API'si.
+
+### Deploy: Railway
+Uygulama Railway platformuna Docker ile deploy edilmiştir. HTTPS üzerinden yayına alınmıştır. Kamera ve konum özellikleri HTTPS gerektirdiği için bu tercih edilmiştir.
+
+---
+
+## 2. Proje Klasör Yapısı
+
+```
+Voile/
+├── agents/
+│   ├── ai.py               # Yapay zeka katmanı (Gemini API)
+│   └── README.md           # Agent yetenekleri açıklaması
+├── features/
+│   ├── backend/
+│   │   ├── app.py          # Flask sunucu ve API endpoint'leri
+│   │   ├── db.py           # SQLite veritabanı işlemleri
+│   │   └── requirements.txt
+│   └── frontend/
+│       ├── index.html      # Ana ekran
+│       ├── app.js          # Uygulama mantığı
+│       └── styles.css      # Arayüz stilleri
+├── Dockerfile              # Railway deploy yapılandırması
+├── README.md
+├── idea.md
+├── prd.md
+├── tasks.md
+├── tech-stack.md
+└── user-flow.md
+```
+
+---
+
+## 3. Kurulum Adımları
+
+### Gereksinimler
+- Python 3.10+
+- Google AI Studio API anahtarı (ücretsiz: aistudio.google.com)
+
+### Adım 1: Sanal Ortam Kurulumu
+
 ```bash
-pip install flask google-generativeai python-dotenv
+cd features/backend
+python -m venv venv
 
-Voile_App/
-│
-├── app.py              # Python sunucu kodlarımızın ana dosyası
-├── .env                # Gizli API anahtarımızı saklayacağımız dosya
-└── templates/          # Klasör
-    └── index.html      # Ana ekranımızın HTML dosyası
+# Windows
+venv\Scripts\activate
 
-GEMINI_API_KEY=senin_google_ai_studio_anahtarın_buraya_gelecek
+# Mac/Linux
+source venv/bin/activate
+```
+
+### Adım 2: Kütüphanelerin Yüklenmesi
+
+```bash
+pip install -r requirements.txt
+```
+
+Kullanılan paketler:
+```
+flask
+flask-cors
+python-dotenv
+google-genai
+```
+
+### Adım 3: Ortam Değişkenleri
+
+`features/backend/` klasöründe `.env` dosyası oluşturun:
+
+```
+GEMINI_API_KEY=sizin_anahtarınız
+SQLITE_PATH=features/backend/voile.sqlite3
+ALLOWED_ORIGINS=http://localhost:8000
+PORT=8000
+```
+
+### Adım 4: Uygulamayı Çalıştırma
+
+```bash
+python app.py
+```
+
+Tarayıcıdan açın: `http://localhost:8000`
+
+---
+
+## 4. Deploy (Railway)
+
+1. railway.app adresine gidin, GitHub ile giriş yapın
+2. Repoyu bağlayın, Railway Dockerfile'ı otomatik algılar
+3. Variables sekmesinden ortam değişkenlerini ekleyin
+4. Deploy edin, HTTPS linki alın
