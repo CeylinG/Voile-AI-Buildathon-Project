@@ -1,38 +1,88 @@
 # Ürün Gereksinim Belgesi (PRD): Voile Web Uygulaması
 
 ## 1. Projenin Amacı
-"Voile", görme engelli bireylerin yapay zeka ile karmaşık arayüzlere takılmadan, tamamen ses odaklı ve doğal bir şekilde iletişim kurmasını sağlayan bir mini web uygulamasıdır. Temel amaç, kullanıcının ekranda düğme arama derdini ortadan kaldırarak cihazı akıllı bir "radyo sunucusu" gibi çalışan, erişilebilir bir asistana dönüştürmektir.
 
-## 2. Kullanıcı Akışı (Kullanıcı Uygulamayı Nasıl Kullanacak?)
-1. **Kurulum:** Kullanıcı, Safari üzerinden "Ana Ekrana Ekle" diyerek Voxa'yı telefonuna bir ikon olarak ekler. (Apple Kestirmeler yardımıyla "Hey Siri, Voile'yi aç" komutu ayarlanır).
-2. **Başlangıç:** Uygulama açıldığında ekranda hiçbir karmaşık menü olmaz. Ekranın *herhangi bir yerine* dokunulduğunda sistem dinlemeye başlar.
-3. **Etkileşim:** Kullanıcı konuşur. Yapay zeka, görsel betimlemelerden uzak, akıcı ve doğal bir diksiyonla cevap verir.
-4. **Hata Önleme:** Voxa konuşurken kullanıcı yanlışlıkla ekrana tekrar dokunursa, yapay zekanın sözü kesilmez veya sistem baştan başlamaz.
+Voile, görme engelli bireylerin yapay zeka ile karmaşık arayüzlere takılmadan, tamamen ses odaklı ve doğal bir şekilde iletişim kurmasını sağlayan bir web uygulamasıdır.
 
-## 3. Temel Özellikler (Core Features)
+---
 
-* **Devasa Tekil Buton (Tüm Ekran):** Ekranda küçük butonlar olmayacak. Ekranın %100'ü görünmez, dev bir dokunmatik alan olacak. Kullanıcı telefonu eline aldığında nereye dokunduğunu düşünmek zorunda kalmayacak.
-* **Kesintisiz Konuşma Koruması (Debounce/Kilit Mekanizması):** Voile konuşurken veya kullanıcının sesini işlerken ekran kilitlenecek. Böylece peş peşe gelen yanlışlıkla dokunmalar sistemi çökertmeyecek veya konuşmayı başa sarmayacak.
-* **Bağlamsal Bellek (Sohbet Geçmişi):** Voile, her soruyu sıfırdan sorulmuş gibi algılamayacak. Önceki konuşmaları aklında tutarak gerçek bir sohbet akışı (radyo sunucusu kıvamında) sağlayacak.
-* **Liste Yönetimi (Hafıza):** * Kullanıcı "Bir alışveriş listesi oluştur" dediğinde Voile özel bir "liste moduna" geçecek.
-    * Maddeler eklenebilecek, çıkarılabilecek.
-    * "Listemi oku" denildiğinde, belleğe kaydedilmiş bu maddeler sırayla, tane tane okunacak.
+## 2. Kullanıcı Akışı
 
-## 4. Yapay Zekanın Kişiliği (Prompt Engineering - Sisteme Verilecek Talimat)
-Voile'nin arka planında şu kurallar kesin olarak tanımlanacak:
-* *Asla emoji kullanma.*
-* *Asla "görselde gördüğünüz gibi", "kırmızı renkli", "sol üst köşedeki" gibi görmeye dayalı betimlemeler yapma.*
-* *Diksiyonun bir radyo sunucusu gibi akıcı, net ve düz olsun.*
-* *Yanıtlarını kısa, öz ve anlaşılır tut.*
+1. **Kurulum:** Kullanıcı Safari üzerinden "Ana Ekrana Ekle" diyerek Voile'yi telefonuna ikon olarak ekler. Apple Kestirmeler yardımıyla "Hey Siri, Voile'yi aç" komutu ayarlanabilir.
+2. **Başlangıç:** Uygulama açıldığında ekranda hiçbir karmaşık menü olmaz. Kayıtlı liste varsa Voile sesli olarak kullanıcıyı bilgilendirir.
+3. **Etkileşim:** Ekranın herhangi bir yerine dokunulur, kullanıcı konuşur. Yapay zeka görsel betimlemelerden uzak, akıcı ve doğal bir diksiyonla yanıt verir.
+4. **Konuşmayı Kesme:** Voile yanıt okurken kullanıcı ekrana tekrar dokunursa konuşma anında kesilir ve sistem hazır durumuna döner.
+5. **Hata Önleme:** Dinleme ve düşünme aşamalarında ekrana yapılan yanlışlıkla dokunmalar yok sayılır, sistem başa sarılmaz.
 
-## 5. Teknik Mimari (Sistem Nasıl Çalışacak?)
-Bu sistemi hayata geçirmek için teknik altyapımız şu şekilde olacak:
+---
 
-* **Ön Yüz (Frontend):** HTML, CSS ve JavaScript kullanılacak. Tarayıcının kendi ses tanıma (Speech-to-Text) ve seslendirme (Text-to-Speech) özelliklerinden faydalanacağız. Arayüz karmaşadan uzak, simsiyah veya tek renk olacak.
-* **Arka Yüz (Backend):** Arka planda gelen metinleri işlemek, listeleri yönetmek ve yapay zeka ile haberleşmek için Python kullanılacak.
-* **Veritabanı (Database):** Kullanıcıların listelerini ve geçmiş sohbetlerini hızlıca okuyup yazabileceğimiz hafif bir veritabanı (örneğin SQLite).
-* **Yapay Zeka Beyni:** OpenAI'nin sesli asistan özellikli API'si kullanılarak Voxa'ya o akıcı, insansı ses ve zeka kazandırılacak.
+## 3. Temel Özellikler
 
-## 6. Açık Noktalar ve Sınırlandırmalar
-* **Siri Entegrasyonu:** Web uygulamaları doğrudan Siri'ye "beni aç" komutu gönderemez. Kullanıcının bir defaya mahsus Apple Kestirmeler (Shortcuts) uygulamasından "Siri, Voile'yi açınca şu web sitesine git" ayarını yapması gerekecek.
-* **İnternet İhtiyacı:** Ses işleme ve yapay zeka arka planda bulut sunuculara gideceği için Voile'nin aktif bir internet bağlantısına ihtiyacı olacak.
+### Devasa Tekil Dokunma Alanı
+Ekranın yüzde yüzü görünmez, dev bir dokunmatik alandır. Kullanıcı nereye dokunduğunu düşünmek zorunda kalmaz.
+
+### Kesintisiz Konuşma Koruması
+Voile konuşurken veya kullanıcının sesini işlerken ekran kilit mekanizmasıyla korunur. Peş peşe gelen yanlışlıkla dokunmalar sistemi çökertmez. Yalnızca konuşma sırasındaki dokunma konuşmayı durdurur.
+
+### Bağlamsal Bellek
+Voile her soruyu sıfırdan sorulmuş gibi algılamaz. Önceki konuşmaları SQLite veritabanında saklayarak gerçek bir sohbet akışı sağlar.
+
+### Liste Yönetimi
+- "Alışveriş listesi oluştur" komutuyla liste oluşturulur.
+- "Listeye ekmek ekle", "listeden süt çıkar" komutlarıyla liste güncellenir.
+- "Listemi oku" komutuyla maddeler sırayla sesli okunur.
+- Listeler kalıcı olarak kaydedilir, uygulama kapatılıp açılsa bile kaybolmaz.
+
+### Güncel Haber Okuma
+Web araması yaparak gerçek zamanlı haber getirir. "Ekonomi haberleri oku", "sporda bugün neler oldu" gibi komutlarla çalışır.
+
+### Hava Durumu
+Kullanıcının bulunduğu konumun hava durumunu söyler. Şehir bazlı sorgular da desteklenir.
+
+### Saat ve Tarih
+Anlık saat ve tarih bilgisini doğrudan söyler.
+
+### Kamera ile Nesne Tanıma
+"Kamerayı aç" veya "bu ne" komutuyla kamera devreye girer. Kullanıcı nesneyi kameraya tutup ekrana dokunur, Voile ürünü, etiketi, banknotu veya sahneyi sesli olarak tanımlar.
+
+---
+
+## 4. Yapay Zekanın Kişiliği
+
+Voile'nin arka planında şu kurallar tanımlanmıştır:
+
+- Asla emoji kullanma.
+- Asla görmeye dayalı betimlemeler yapma. "Görselde", "kırmızı renkli", "sol üst köşe" gibi ifadeler yasaktır.
+- Diksiyon bir radyo sunucusu gibi akıcı, net ve düz olsun.
+- Yanıtlar kısa, öz ve anlaşılır olsun.
+- Yanıtı asla yarım bırakma.
+- Saat, tarih ve hava durumu sorulduğunda sistem promptuna enjekte edilen gerçek veriyi kullan ve doğrudan söyle.
+
+---
+
+## 5. Teknik Mimari
+
+### Ön Yüz (Frontend)
+HTML, CSS ve Vanilla JavaScript. Tarayıcının yerleşik Web Speech API'si ile konuşma tanıma (STT) ve sesli yanıt (TTS) sağlanır. Arayüz karmaşadan uzak, simsiyah ve tek dokunma alanından oluşur.
+
+### Arka Yüz (Backend)
+Python ve Flask. Gelen metinleri işler, liste yönetimini yürütür, yapay zeka ile haberleşir, hava durumu ve görüntü analizi API çağrılarını gerçekleştirir.
+
+### Veritabanı
+SQLite. Kullanıcıların listelerini ve sohbet geçmişlerini kalıcı olarak saklar.
+
+### Yapay Zeka
+Google Gemini API. Sohbet yanıtları, görüntü analizi ve web araması Gemini üzerinden çalışır.
+
+### Harici Servisler
+- Open-Meteo API — Hava durumu
+- Geolocation API — Kullanıcı konumu
+- Google Search Tool (Gemini yerleşik) — Gerçek zamanlı web araması
+
+---
+
+## 6. Açık Noktalar ve Sınırlamalar
+
+**Siri Entegrasyonu:** Web uygulamaları doğrudan Siri'ye komut gönderemez. Kullanıcının bir defaya mahsus Apple Kestirmeler uygulamasından "Voile'yi aç" kestirmesini kurması gerekir.
+
+**İnternet Zorunluluğu:** Yapay zeka ve hava durumu servisleri bulut tabanlı olduğu için aktif internet bağlantısı gereklidir.
