@@ -3,19 +3,21 @@
 Görme engelli bireyler için tasarlanmış, tamamen ses odaklı yapay zeka asistanı. Ekrana bir kez dokunun, konuşun, dinleyin — başka hiçbir şeye gerek yok.
 
 ## Problem
-Görme engelli bireyler akıllı telefon arayüzlerini kullanmakta ciddi güçlük çeker. Mevcut uygulamalar görsel tasarım üzerine kurulu olduğundan erişilebilirlik ikincil planda kalır. Voile bu problemi tersine çeviriyor: ekranda hiçbir karmaşıklık yok, her şey sesle çalışıyor.
+Görme engelli bireyler, günlük hayatta karşılaştıkları dezavantajlı durumları aşmak ve bağımsızlıklarını artırmak için yapay zeka teknolojilerine büyük bir ihtiyaç duymaktadır. Ancak günümüzdeki popüler yapay zeka asistanlarının karmaşık ve görsel odaklı arayüzleri, bu bireylerin söz konusu teknolojilere erişimini büyük ölçüde engellemektedir. En çok fayda sağlayacak kesim, tasarım engelleri yüzünden yapay zekayı verimli bir şekilde kullanamamaktadır.
 
 ## Çözüm
-Voile, görme engelli bireyler için görsel arayüz karmaşasını tamamen ortadan kaldıran, ekranın neresine dokunulursa dokunulsun çalışan sesli bir asistandır. Uygulamanın merkezinde yer alan yapay zeka, kullanıcının sesli komutlarını işler, doğal dilde sohbet eder ve istenen görevleri yerine getirir. Yapay zeka ayrıca kamera aracılığıyla fiziksel dünyayı (nesneler, banknotlar, etiketler) analiz ederek kullanıcıya sesli betimlemeler sunar ve web'den gerçek zamanlı bilgi çeker.
+Voile, görme engelli bireylerin günlük hayatta yaşadıkları dezavantajları ortadan kaldırmak ve onlara dijital dünyada tam bağımsızlık kazandırmak için geliştirilmiş, %100 erişilebilir bir yapay zeka asistanıdır. Görsel menüleri ve karmaşık arayüzleri tamamen ortadan kaldıran Voile, ekranın neresine dokunulursa dokunulsun çalışarak yapay zekayı ulaşılamaz bir teknoloji olmaktan çıkarır. 
+
+Uygulamanın merkezindeki yapay zeka, görme engelli bireylerin çevreleriyle olan etkileşimini baştan yaratır: Kamerayı kullanarak fiziksel dünyayı (banknotlar, ürün etiketleri, nesneler) onlar için sesli olarak betimler, doğal dilde sohbet ederek sorularını yanıtlar ve günlük rutinlerini (liste yapma, hava durumu, haberler) başkasına ihtiyaç duymadan yönetmelerini sağlar. Voile, yapay zekanın gücünü doğrudan dezavantajlı bireylerin hayatını kolaylaştıran, onlara eşit fırsatlar sunan akıllı bir yol arkadaşına dönüştürür.
 
 **Nasıl Çalışır ve Özellikleri:**
-* **Temel Kullanım:** Ekranın herhangi bir yerine dokunun, konuşun ve yanıtı dinleyin. Yanıt okunurken durdurmak isterseniz ekrana tekrar dokunmanız yeterlidir.
-* **Yapay Zeka Sohbeti:** Her türlü soruyu sorabilir, sohbet edebilirsiniz. Voile konuşma geçmişini hatırlar, bağlamı koruyarak yanıt verir.
-* **Liste Yönetimi:** Sesli komutlarla ("Alışveriş listesi oluştur", "listeye süt ekle") liste yönetimi yapabilirsiniz. Listeler veritabanına kaydedilir ve uygulama kapansa bile kaybolmaz.
-* **Güncel Haberler ve Hava Durumu:** Web araması yaparak gerçek zamanlı haber getirir ve konumunuza göre hava durumunu söyler.
+* **Engelsiz Etkileşim:** Ekranın herhangi bir yerine dokunun, konuşun ve yanıtı dinleyin. Yanıt okunurken durdurmak isterseniz ekrana tekrar dokunmanız yeterlidir. Öğrenilecek hiçbir görsel menü veya buton yoktur.
+* **Kamera ile Çevreyi Anlama:** Kamerayı açıp nesneyi gösterdiğinizde; yapay zeka ürünü, etiketi veya banknotu analiz edip sesli olarak tanımlayarak kullanıcının fiziksel dünyadaki bağımsızlığını artırır.
+* **Yapay Zeka Sohbeti:** Her türlü soruyu sorabilir, sohbet edebilirsiniz. Voile konuşma geçmişini hatırlar, bağlamı koruyarak günlük bir asistan gibi yanıt verir.
+* **Bağımsız Liste Yönetimi:** Sesli komutlarla ("Alışveriş listesi oluştur", "listeye süt ekle") liste yönetimi yapabilirsiniz. Listeler veritabanına kaydedilir ve uygulama kapansa bile kaybolmaz.
+* **Güncel Hayata Erişim:** Web araması yaparak gerçek zamanlı haber getirir ve konumunuza göre hava durumunu anında söyler.
 * **Saat ve Tarih:** "Saat kaç", "bugün günlerden ne" sorularına anında yanıt verir.
-* **Kamera ile Nesne Tanıma:** Kamerayı açıp nesneyi gösterdiğinizde; yapay zeka ürünü, etiketi veya banknotu sesli olarak tanımlar.
-
+  
 ## Canlı Demo
 * **Yayın Linki:** https://voile-ai-buildathon-project-production.up.railway.app/
 * **Demo Video:** https://www.loom.com/share/856a086ff6064a4fbf3f9cab71592846
