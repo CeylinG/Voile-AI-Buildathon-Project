@@ -1,81 +1,50 @@
 # Voile
 
-Görme engelli bireyler için tasarlanmış, **tamamen ses odaklı** yapay zeka asistanı. Ekrana bir kez dokunun, konuşun, dinleyin — başka hiçbir şeye gerek yok.
+Görme engelli bireyler için tasarlanmış, tamamen ses odaklı yapay zeka asistanı. Ekrana bir kez dokunun, konuşun, dinleyin — başka hiçbir şeye gerek yok.
 
 ## Problem
-
 Görme engelli bireyler akıllı telefon arayüzlerini kullanmakta ciddi güçlük çeker. Mevcut uygulamalar görsel tasarım üzerine kurulu olduğundan erişilebilirlik ikincil planda kalır. Voile bu problemi tersine çeviriyor: ekranda hiçbir karmaşıklık yok, her şey sesle çalışıyor.
 
-## Nasıl Çalışır?
+## Çözüm
+Voile, görme engelli bireyler için görsel arayüz karmaşasını tamamen ortadan kaldıran, ekranın neresine dokunulursa dokunulsun çalışan sesli bir asistandır. Uygulamanın merkezinde yer alan yapay zeka, kullanıcının sesli komutlarını işler, doğal dilde sohbet eder ve istenen görevleri yerine getirir. Yapay zeka ayrıca kamera aracılığıyla fiziksel dünyayı (nesneler, banknotlar, etiketler) analiz ederek kullanıcıya sesli betimlemeler sunar ve web'den gerçek zamanlı bilgi çeker.
 
-Ekranın herhangi bir yerine dokunun → konuşun → yanıtı dinleyin.  
-Yanıt okunurken durdurmak isterseniz tekrar dokunun.
-
-## Özellikler
-
-**Yapay Zeka Sohbeti**  
-Her türlü soruyu sorabilir, sohbet edebilirsiniz. Voile konuşma geçmişini hatırlar, bağlamı koruyarak yanıt verir.
-
-**Liste Yönetimi**  
-"Alışveriş listesi oluştur", "listeye süt ekle", "ekmek listeden çıkar", "listemi oku" komutlarıyla sesli liste yönetimi. Listeler kaydedilir, uygulama kapatılıp açılsa bile kaybolmaz.
-
-**Güncel Haberler**  
-"Ekonomi haberleri oku", "sporda bugün neler oldu" gibi komutlarla web araması yaparak gerçek zamanlı haber getirir.
-
-**Hava Durumu**  
-Bulunduğunuz konumun hava durumunu söyler. "İzmir'de hava nasıl" gibi şehir bazlı sorgular da çalışır.
-
-**Saat ve Tarih**  
-"Saat kaç", "bugün günlerden ne" sorularına anında yanıt verir.
-
-**Kamera ile Nesne Tanıma**  
-"Kamerayı aç" veya "bu nedir" dediğinizde kamera açılır. Nesneyi kameraya tutup ekrana dokunun — Voile ürünü, etiketi, banknotu veya sahneyi sesli olarak tanımlar.
+**Nasıl Çalışır ve Özellikleri:**
+* **Temel Kullanım:** Ekranın herhangi bir yerine dokunun, konuşun ve yanıtı dinleyin. Yanıt okunurken durdurmak isterseniz ekrana tekrar dokunmanız yeterlidir.
+* **Yapay Zeka Sohbeti:** Her türlü soruyu sorabilir, sohbet edebilirsiniz. Voile konuşma geçmişini hatırlar, bağlamı koruyarak yanıt verir.
+* **Liste Yönetimi:** Sesli komutlarla ("Alışveriş listesi oluştur", "listeye süt ekle") liste yönetimi yapabilirsiniz. Listeler veritabanına kaydedilir ve uygulama kapansa bile kaybolmaz.
+* **Güncel Haberler ve Hava Durumu:** Web araması yaparak gerçek zamanlı haber getirir ve konumunuza göre hava durumunu söyler.
+* **Saat ve Tarih:** "Saat kaç", "bugün günlerden ne" sorularına anında yanıt verir.
+* **Kamera ile Nesne Tanıma:** Kamerayı açıp nesneyi gösterdiğinizde; yapay zeka ürünü, etiketi veya banknotu sesli olarak tanımlar.
 
 ## Canlı Demo
-
-Yayın Linki: https://voile-ai-buildathon-project-production.up.railway.app/
-Demo Video: https://www.loom.com/share/856a086ff6064a4fbf3f9cab71592846
+* **Yayın Linki:** https://voile-ai-buildathon-project-production.up.railway.app/
+* **Demo Video:** https://www.loom.com/share/856a086ff6064a4fbf3f9cab71592846
 
 ## Kullanılan Teknolojiler
+* **Python Flask** — Backend sunucu
+* **HTML / CSS / JavaScript** — Frontend arayüz
+* **Google Gemini API** — Yapay zeka, görüntü analizi ve web araması
+* **SQLite** — Sohbet geçmişi ve liste yönetimi
+* **Web Speech API** — Konuşma tanıma ve sesli yanıt
+* **Open-Meteo API** — Gerçek zamanlı hava durumu
+* **Geolocation API** — Kullanıcı konumu tespiti
 
-- **Python Flask** — Backend sunucu
-- **HTML / CSS / JavaScript** — Frontend arayüz
-- **Google Gemini API** — Yapay zeka, görüntü analizi ve web araması
-- **SQLite** — Sohbet geçmişi ve liste yönetimi
-- **Web Speech API** — Konuşma tanıma (STT) ve sesli yanıt (TTS)
-- **Open-Meteo API** — Gerçek zamanlı hava durumu
-- **Geolocation API** — Kullanıcı konumu tespiti
+## Nasıl Çalıştırılır?
 
-## Kurulum
+**Gereksinimler:**
+* Python 3.10 veya üzeri
+* Google AI Studio API anahtarı (ücretsiz olarak aistudio.google.com adresinden alınabilir)
 
-### Gereksinimler
+**Çalıştırma Adımları:**
+1. Terminalde `cd backend` komutu ile klasöre gidin.
+2. `python -m venv venv` ile sanal ortamı oluşturun.
+3. Windows için `venv\Scripts\activate` (Mac/Linux için `source venv/bin/activate`) komutuyla sanal ortamı aktifleştirin.
+4. `pip install -r requirements.txt` ile gerekli kütüphaneleri yükleyin.
+5. `.env.example` dosyasının adını `.env` olarak değiştirin ve içine kendi API anahtarınızı girin.
+6. `python app.py` komutuyla uygulamayı başlatın.
+7. Tarayıcınızdan `http://localhost:8000` adresine giderek uygulamayı açın.
 
-- Python 3.10+
-- Google AI Studio API anahtarı (ücretsiz: aistudio.google.com)
-
-### Çalıştırma
-
-```bash
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-copy ..\.env.example .env
-python app.py
-```
-
-Tarayıcıdan açın: `http://localhost:8000`
-
-### Ortam Değişkenleri
-
-```
-GEMINI_API_KEY=your_api_key_here
-SQLITE_PATH=backend/voile.sqlite3
-ALLOWED_ORIGINS=http://localhost:8000
-```
-
-## Notlar
-
-- Kamera ve konum özellikleri HTTPS gerektirir.
-- iOS Safari'de "Ana Ekrana Ekle" ile uygulama gibi kullanılabilir.
-- İlk açılışta mikrofon, kamera ve konum izinleri istenecektir.
+**Notlar:**
+* Kamera ve konum özellikleri güvenlik gereği HTTPS bağlantısı gerektirir.
+* iOS Safari'de "Ana Ekrana Ekle" seçeneği ile telefonunuzda bir mobil uygulama gibi kullanılabilir.
+* İlk açılışta tarayıcı tarafından mikrofon, kamera ve konum izinleri istenecektir.
